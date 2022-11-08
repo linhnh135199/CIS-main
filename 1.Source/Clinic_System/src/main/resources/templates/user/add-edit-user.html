@@ -1,0 +1,62 @@
+<div class="modal fade" id="modal-add-edit-user" style="display: none;" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title title-add-edit-user"></h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<input type="hidden" id="id-user" class="form-control">
+				<div class="form-group">
+					<label>Điện thoại<span class="text-danger"> (*)</span></label>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-phone"></i></span>
+						</div>
+						<input type="text" id="phone-user" class="form-control" data-inputmask='"mask": "9999999999"' data-mask>
+					</div>
+				</div>
+				<div class="form-group" style="display: none;">
+					<label for="pass-user">Mật khẩu<span class="text-danger"> (*)</span></label>
+					<input type="password" id="pass-user" class="form-control">
+				</div>
+				<div class="form-group" style="display: none;">
+					<label for="repass-user">Nhập lại mật khẩu<span class="text-danger"> (*)</span></label>
+					<input type="password" id="repass-user" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="full-name-user">Họ và tên<span class="text-danger"> (*)</span></label>
+					<input type="text" id="full-name-user" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="sex-user">Giới tính<span class="text-danger"> (*)</span></label>
+					<select id="sex-user" class="form-control custom-select">
+						<option selected="" disabled="">Select one</option>
+						<option>Nam</option>
+						<option>Nữ</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label>Ngày sinh<span class="text-danger"> (*)</span></label>
+					<input type="text" class="form-control" id="birthday-user" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric">
+				</div>
+				<div class="form-group">
+					<label for="email-user">Email address</label>
+					<input type="email" class="form-control" id="email-user" placeholder="Enter email">
+				</div>
+				<div class="form-group">
+					<label for="address-user">Address</label>
+					<input type="text" class="form-control" id="address-user" placeholder="Address">
+				</div>
+			</div>
+			<div class="modal-footer justify-content-between">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+				<button type="button" class="btn btn-primary" onclick="addEditUserAction()">Lưu</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

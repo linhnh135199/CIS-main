@@ -1,0 +1,161 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ICD10</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" th:href="@{/lib/css/all.min.css}">
+    <!-- IonIcons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.css"
+          integrity="sha512-gp+RQIipEa1X7Sq1vYXnuOW96C4704yI1n0YB9T/KqdvqaEgL6nAuTSrKufUX3VBONq/TPuKiXGLVgBKicZ0KA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.css"
+          integrity="sha512-ClXpwbczwauhl7XC16/EFu3grIlYTpqTYOwqwAi7rNSqxmTqCpE8VS3ovG+qi61GoxSLnuomxzFXDNcPV1hvCQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" th:href="@{/lib/css/adminlte.min.css}">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css'>
+</head>
+
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+    <div th:replace="common/header :: header"/>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-4">
+                        <h1 class="m-0">Quản lý danh mục ICD10</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-4">
+                        <div class="input-group input-group-lg">
+                            <input type="search" class="form-control form-control-lg key-search-icd"
+                                   placeholder="Type your keywords here" value="">
+                            <div class="input-group-append">
+                                <button class="btn btn-lg btn-default" onclick="actionSearchICD()">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                            <li class="breadcrumb-item active">ICD10</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title"></h3>
+                                <button type="button" class="btn btn-block bg-gradient-primary btn-sm float-sm-right"
+                                        data-toggle="modal" data-target="#modal-add-edit-icd" style="max-width:100px"><span class="bi bi-plus-circle"></span>
+                                    Thêm danh mục
+                                </button>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table class="table table-bordered data-table-icd" id="myTable">
+                                    <thead>
+                                    <tr style="justify-content: 'center', align-item: 'center">
+                                        <th style="width: 5%">#</th>
+                                        <th style="width: 10%" onclick="sortTable(0)">Stt chương<i class="fas fa-sort"></i></th>
+                                        <th style="width: 10%" onclick="sortTable(1)">Mã chương<i class="fas fa-sort"></i></th>
+                                        <th style="width: 15%" onclick="sortTable(2)">Tên chương<i class="fas fa-sort"></i></th>
+                                        <th style="width: 10%" onclick="sortTable(3)">Mã nhóm chính<i class="fas fa-sort"></i></th>
+                                        <th style="width: 10%" onclick="sortTable(4)">Tên nhóm chính<i class="fas fa-sort"></i></th>
+                                        <th style="width: 10%" onclick="sortTable(5)">Tên loại<i class="fas fa-sort"></i></th>
+                                        <th style="width: 10%" onclick="sortTable(6)">Mã bệnh<i class="fas fa-sort"></i></th>
+                                        <th style="width: 15%" onclick="sortTable(7)">Tên bệnh<i class="fas fa-sort"></i></th>
+                                        <th style="width: 10%" onclick="sortTable(8)">Mã báo cáo<i class="fas fa-sort"></i></th>
+                                        <th style="width: 40px"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer clearfix list-icd-paging">
+                                <ul class="pagination pagination-sm m-0 float-left">
+                                    <li class="page-item show-to-page">Showing 0 to 0 of 0 entries</li>
+                                </ul>
+                                <ul class="pagination pagination-sm m-0 float-right">
+                                    <li class="page-item"><a class="previous-to-page page-link" href="#">&laquo;</a>
+                                    </li>
+                                    <input type="number" class="current-page" style="width: 50px;">
+                                    <button type="button" class="btn btn-default go-to-page" style="line-height: 1.0;">
+                                        Go
+                                    </button>
+                                    <li class="page-item"><a class="next-to-page page-link" href="#">&raquo;</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /.content -->
+    </div>
+
+    <div th:replace="common/footer :: footer"/>
+
+</div>
+
+<div th:replace="catalog/icd10/add-edit-icd10"/>
+<div th:replace="catalog/confirm-delete-catalog"/>
+
+<script src="/lib/js/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/lib/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE -->
+<!--<script src="/lib/select2/js/select2.full.min.js" ></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.full.min.js"
+        integrity="sha512-RtZU3AyMVArmHLiW0suEZ9McadTdegwbgtiQl5Qqo9kunkVg1ofwueXD8/8wv3Af8jkME3DDe3yLfR8HSJfT2g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!--<script src="/lib/js/moment.min.js" ></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!--<script src="/lib/js/jquery.inputmask.min.js" ></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8-beta.15/jquery.inputmask.min.js"
+        integrity="sha512-eum9D1RPicKrvZhf7ou17bWG/No1K7hX/kayp4EjFfuRx5E6jTtHkqUs4HN3whiaNqWx4g3UThNWcFjJqCAsXw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- date-range-picker -->
+<!--<script src="/lib/js/daterangepicker.min.js" ></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.min.js"
+        integrity="sha512-mh+AjlD3nxImTUGisMpHXW03gE6F4WdQyvuFRkjecwuWLwD2yCijw4tKA3NsEFpA1C3neiKhGXPSIGSfCYPMlQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!--<script src="/lib/js/tempusdominus-bootstrap-4.min.js" ></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js"
+        integrity="sha512-k6/Bkb8Fxf/c1Tkyl39yJwcOZ1P4cRrJu77p83zJjN2Z55prbFHxPs9vN7q3l3+tSMGPDdoH51AEU8Vgo1cgAA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/lib/js/adminlte.js"></script>
+<script src="/app/js/icd10-management.js"></script>
+</body>
+</html>

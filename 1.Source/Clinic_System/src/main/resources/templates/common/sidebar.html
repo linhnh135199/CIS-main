@@ -1,0 +1,136 @@
+<html xmlns:th="https://www.thymeleaf.org"
+	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+      <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css'>
+<head>
+</head>
+<body>
+	<div th:fragment="sidebar" class="sidenav">
+		<div class="sidebar">
+			<!-- Sidebar user panel (optional) -->
+			<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+				<div class="image">
+					<img th:src="@{/lib/img/user-160x160.png}" class="img-circle elevation-2" alt="User Image">
+				</div>
+				<div class="info">
+					<a href="/user/update-profile-user" class="d-block user-login-value"><span th:text ="${currentUser.getName()}"></span></a>
+<!--					<a href="#" class="d-block">Admin</a>-->
+				</div>
+			</div>
+
+
+			<div th:switch="${currentUser.getRoleId()}">
+				<!-- role admin -->
+				<div th:case="1">
+					<nav class="mt-2">
+						<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+							<!-- Add icons to the links using the .nav-icon class
+                                 with font-awesome or any other icon font library -->
+							<!--					danh sách thông tin-->
+							<li class="nav-header"><strong style="font-size: 18px;">Danh sách thông tin</strong></li>
+							<li class="nav-item">
+								<a th:href="@{/user/doctor-management}" class="nav-link">
+									<span>Bác sỹ</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a th:href="@{/user/patient-management}" class="nav-link">
+									<span>Bệnh nhân</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a th:href="@{/user/receptionist-management}" class="nav-link">
+									<span>Lễ tân</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a th:href="@{/user/admin-management}" class="nav-link">
+									<span>Quản trị viên</span>
+								</a>
+							</li>
+							<!--					lịch làm việc-->
+							<li class="nav-header"><strong style="font-size: 18px;">Lịch trực</strong></li>
+							<li class="nav-item">
+								<a th:href="@{/doctor/calendar-management}" class="nav-link">
+									<span>Lịch trực</span>
+								</a>
+							</li>
+
+							<li class="nav-header"><strong style="font-size: 18px;">Danh mục</strong></li>
+							<li class="nav-item">
+								<a th:href="@{/catalog_service/service_master/show}" class="nav-link">
+									<span>Danh mục dịch vụ kĩ thuật</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a th:href="@{/catalog_icd10/disease_list_icd10/show}" class="nav-link">
+									<span>Danh mục bệnh IDC10</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a th:href="@{/catalog_medicine/medicine_master/show}" class="nav-link">
+									<span>Danh mục thuốc</span>
+								</a>
+							</li>
+
+						</ul>
+					</nav>
+				</div>
+				<!-- role doctor -->
+				<div th:case="2">
+					<nav class="mt-2">
+						<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+							<li class="nav-item">
+								<a th:href="@{/doctor/list-patient-management}" class="nav-link">
+									<span>Danh sách bệnh nhân</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a th:href="@{/doctor/list-route-management}" class="nav-link">
+									<span>Danh sách phác đồ</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a th:href="@{/doctor/list-clinical-management}" class="nav-link">
+									<span>Hồ sơ bệnh nhân</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a th:href="@{/doctor/calendar-management}" class="nav-link">
+									<span>Lịch trực</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+				<div th:case="3">
+					<nav class="mt-2">
+						<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+							<li class="nav-item">
+								<a th:href="@{/doctor/booking-management}" class="nav-link">
+									<span>Danh sách lịch hẹn</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a th:href="@{/user/patient-management}" class="nav-link">
+									<span>Danh sách bệnh nhân</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a th:href="@{/user/payment-management}" class="nav-link">
+									<span>Thanh toán</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a th:href="@{/doctor/calendar-management}" class="nav-link">
+									<span>Lịch trực</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<!-- /.sidebar-menu -->
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<div class="modal fade" id="modal-add-edit-Icd" style="display: none;" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title title-add-edit-icd"></h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<input type="hidden" id="id-icd" class="form-control">
+				<div class="form-group">
+					<label for="chapter">Chương</label>
+					<input type="text" id="chapter" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="chapter-code">Mã chương</label>
+					<input type="text" id="chapter-code" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="chapter-name">Tên chương</label>
+					<input type="text" id="chapter-name" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="group-number">Mã nhóm</label>
+					<input type="text" id="group-number" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="group-name">Tên nhóm</label>
+					<input type="text" id="group-name" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="type">Tên loại</label>
+					<input type="text" id="type" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="disease_code">Mã bệnh</label>
+					<input type="text" id="disease_code" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="disease_name">Tên bệnh</label>
+					<input type="text" id="disease_name" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="report_code">Mã nhóm báo cáo của BYT</label>
+					<input type="text" id="report_code" class="form-control">
+				</div>
+			</div>
+			<div class="modal-footer justify-content-between">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+				<button type="button" class="btn btn-primary" onclick="addEditICDAction()">Lưu</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

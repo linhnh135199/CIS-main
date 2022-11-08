@@ -1,0 +1,142 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="patient-detail">
+    </br>
+    <div>
+        <button type="submit" class="btn btn-success action-examining">Khám bệnh</button>
+        <button type="submit" class="btn btn-warning action-cancel-examining">Hủy khám bệnh</button>
+        <button type="submit" class="btn btn-danger action-examining-done">Kết thúc</button>
+        <button type="submit" class="btn btn-primary action-patient-detail-save">Lưu thông tin</button>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label class="col-form-label">Mã bệnh nhân: </label>
+                        <span class=" col-form-label code-patient"></span>
+                    </div>
+                    <div class="col-sm-8">
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="col-form-label">Họ tên: </label>
+                <span class="col-form-label name-patient"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="col-form-label">Số điện thoại: </label>
+                <span class=" col-form-label phone-patient"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="col-form-label">Giới tính: </label>
+                <span class="col-form-label gender-patient"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="col-form-label">Ngày sinh:</label>
+                <span class="col-form-label birthday-patient"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="col-form-label">Địa chỉ:</label>
+                <span class="col-form-label address-patient"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label class="col-form-label">Nhiệt độ (°C): </label>
+                    <input class="form-control temperature-patient ml-2" id="temperature-patient" style="width: 150px;">
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label class="col-form-label">Chiều cao (cm):</label>
+                    <input class="form-control height-patient ml-2" id="height-patient" style="width: 150px;">
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label class="col-form-label">Huyết áp (mmHg):</label>
+                    <input class="form-control blood-pressure-patient ml-2" id="blood-pressure-patient" style="width: 150px;">
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label class="col-form-label">Cân nặng (kg):</label>
+                    <input class="form-control weight-patient ml-2" id="weight-patient" style="width: 150px;">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Triệu chứng:</label>
+                <div class="col-sm-9">
+                    <textarea class="form-control symptom-patient" placeholder=""></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Chẩn đoán đầu:</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="search-name-first-diagnosis-patient" placeholder=""/>
+                    <input type="hidden" id="search-name-first-diagnosis-patient-value"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Chẩn đoán cuối:</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="search-name-final-diagnosis-patient" placeholder=""/>
+                    <input type="hidden" id="search-name-final-diagnosis-patient-value"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Bệnh kèm theo:</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="search-name-including-diseases-patient" placeholder=""/>
+                    <input type="hidden" id="search-name-including-diseases-patient-value"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Kết luận:</label>
+                <div class="col-sm-9">
+                    <textarea class="form-control conclude-patient" placeholder=""></textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

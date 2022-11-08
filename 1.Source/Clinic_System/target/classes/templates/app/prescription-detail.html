@@ -1,0 +1,179 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="prescription-detail">
+    </br>
+    <div class="row">
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-success" onclick="savePrescription()">Lưu</button>
+            <a class="btn btn-warning" data-toggle="modal" data-target="#modal-add-phac-do-prescrition" onclick="chosePhacDoPrescription()">Chọn phác đồ</a>
+            <button type="submit" class="btn btn-danger" onclick="printPrescription()">In</button>
+            <button type="submit" class="btn btn-primary" onclick="resetPrescription()">Tạo lại</button>
+        </div>
+    </div>
+    <div id = "view-print-don-thuoc">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="col-form-label">Mã BN: </label>
+                    <span class="col-form-label code-patient"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="col-form-label">Họ tên: </label>
+                    <span class="col-form-label name-patient"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="col-form-label">Ngày sinh: </label>
+                    <span class="col-form-label birthday-patient"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="col-form-label">Giới tính:</label>
+                    <span class="col-form-label gender-patient"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="col-form-label">Người kê đơn: </label>
+                    <span class="col-form-label" th:text ="${currentUser.getName()}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="search-name-prescription" placeholder="Chọn tên thuốc theo danh mục thuôc tân dược"/>
+                    <input type="hidden" id="search-name-prescription-value" />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-default" onclick="addPrescriptionToList();">Thêm</button>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Tên thuốc:</label>
+                    <div class="col-sm-8">
+                        <input type ="text" class="form-control name-prescription-text">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Đường dùng:</label>
+                    <div class="col-sm-8">
+                        <input type ="text" class="form-control duong-dung--prescription-text">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Đơn vị:</label>
+                    <div class="col-sm-8">
+                        <input type ="text" class="form-control don-vi-prescription-text">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Hoạt chất :</label>
+                    <div class="col-sm-8">
+                        <input type ="text" class="form-control hoat-chat-prescription-text"></input>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Số lượng:</label>
+                    <div class="col-sm-8">
+                        <input type ="number" class="form-control so-luong-prescription-text"></input>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Hàm lượng:</label>
+                    <div class="col-sm-8">
+                        <input type ="text" class="form-control ham-luong-prescription-text"></input>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Hướng dẫn:</label>
+                    <div class="col-sm-8">
+                        <input type ="text" class="form-control huong-dan-prescription-text"></input>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+        <div class="row" style="width:100%">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Đơn thuốc</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered data-table-prescription" id="myTable">
+                            <thead>
+                            <tr class="text-center">
+                                <th style="width: 10px">#</th>
+                                <th onclick="sortTable(0)">Tên thuốc</th>
+                                <th onclick="sortTable(1)">Hoạt chất và hàm lượng</th>
+                                <th onclick="sortTable(2)">Hướng dẫn uống</th>
+                                <th onclick="sortTable(3)">Đường dùng</th>
+                                <th onclick="sortTable(4)">ĐVT</th>
+                                <th>Số lượng</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-add-phac-do-prescrition" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title title-add-edit-user">Thêm phác đồ thuốc</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Phác đồ thuốc <span class="text-danger"> (*)</span></label>
+                        <select class="form-control select2" id="phac-do-prescrition-add" style="width: 100%;">
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary" onclick="addPhacDopRescritionAction()">Thêm</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</div>
+

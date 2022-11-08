@@ -1,0 +1,132 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="y-lenh">
+    </br>
+    <div class="row">
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-success action-save-y-lenh" onclick="saveYLenh();">Lưu</button>
+            <button type="submit" class="btn btn-danger action-in-y-lenh" onclick="printYLenh();">In</button>
+            <button type="submit" class="btn btn-primary action-reset-y-lenh" onclick="resetYLenh();">Tạo lại</button>
+        </div>
+    </div>
+    <div id="view-print-y-lenh">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="col-form-label">Mã bệnh nhân: </label>
+                    <span class="col-form-label code-patient"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="col-form-label">Họ tên: </label>
+                    <span class=" col-form-label name-patient"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="col-form-label">Ngày sinh: </label>
+                    <span class="col-form-label birthday-patient"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="col-form-label">Giới tính: </label>
+                    <span class="col-form-label gender-patient"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="col-form-label">Người kê đơn: </label>
+                    <span class="col-form-label" th:text ="${currentUser.getName()}"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="col-form-label">Ngày khám: </label>
+                    <span class="col-form-label date-kham"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Loại chuyên khoa:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="search-name-specialized"
+                               placeholder="Loại chuyên khoa"/>
+                        <input type="hidden" id="search-name-specialized-value"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-7">
+                <button type="submit" class="btn btn-default action-search-service-y-lenh"
+                        onclick="getYLenhByChuyenNganh();">Chọn dịch vụ
+                </button>
+                <button type="submit" class="btn btn-default action-search-regimen-y-lenh"
+                        onclick="getPhacDoByChuyenNganh();">Chọn phác đồ
+                </button>
+            </div>
+
+        </div>
+
+        <div class="row" style="width:100%">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Danh sách dịch vụ kĩ thuật</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered data-table-service-y-lenh">
+                            <thead>
+                            <tr class="text-center">
+                                <th style="width: 10px">#</th>
+                                <th>Loại</th>
+                                <th>Tên y lệnh</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-add-service" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title modal-add-server-title"></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="overflow-y: scroll; height: 600px;">
+                    <h2 class="modal-title modal-label-service"></h2>
+                    </br>
+                    <table class="table table-bordered data-table-service-add">
+                        <thead>
+                        <tr>
+                            <th class="row-table-service-add">Tên phác đồ dịch vụ kĩ thuật</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-primary" onclick="addServiceOrRegimen()">Thêm</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</div>

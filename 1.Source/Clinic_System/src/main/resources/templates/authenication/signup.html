@@ -1,0 +1,105 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" th:href="@{/lib/css/bootstrapL.min.css}">
+<!-- Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap"
+	rel="stylesheet">
+<!-- Custom CSS -->
+<link rel="stylesheet" th:href="@{/lib/css/styles.css}">
+<title>Sign up | Clinic System</title>
+</head>
+<body>
+	<main class="login-bg d-flex align-items-center justify-content-center">
+	<div class="login-form-wrap">
+		<h1 class="text-center">Clinic System</h1>
+		<div>
+			<p class="error-register" style="color: red;"></p>
+			<input type="text" name="FirstName" placeholder="FirstName" class="login-form-input register-firstName">
+			<input type="text" name="LastName" placeholder="LastName" class="login-form-input register-lastName">
+			<input type="text" name="Phone" placeholder="Phone" class="login-form-input register-phone">
+			<input type="password" name="pass" placeholder="Password" class="login-form-input register-pass">
+			<input type="password" name="pass" placeholder="RePassword" class="login-form-input register-repass">
+			<div class="d-flex justify-content-between btn-wrap">
+				<button class="btn bg-color-6" onclick="registerAction()">Register</button>
+				<a href="/login" class="btn border-color-6">Sign In</a>
+			</div>
+		</div>
+		<div class="text-center login-form-footer">
+			<a href="#" class="no-style">Term of use.</a> <a href="#"
+				class="no-style">Privacy policy</a>
+		</div>
+		<div class="bg"></div>
+	</div>
+	</main>
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="/lib/js/jquery.min.js"></script>
+	<script src="/lib/js/popper.min.js"></script>
+	<script src="/lib/js/bootstrap.min.js"></script>
+	<script>
+		function registerAction(){
+			if(!validateCreate()){
+				var data = {};
+				data.firstname = $('.register-firstName').val();
+				data.lastname = $('.register-lastName').val();
+				data.phone = $('.register-phone').val();
+				data.password = $('.register-pass').val();
+				$.ajax({
+					type: "POST",
+					url: "/auth/register",
+					data:data,
+					dataType: 'json',
+					success: function (response) {
+						if(response.responseCode == '00000'){
+							localStorage.setItem('token', response.data.token);
+							localStorage.setItem('userid', response.data.user_id);
+							window.location.href = '/home';
+						}else{
+							$('.error-register').html(response.message);
+						}
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						console.log(thrownError);
+					}
+				});
+			}
+		}
+
+		function validateCreate(){
+			var check = false;
+			$('.error-register').html('');
+			var html = '';
+			if($('.register-firstName').val().trim() == ''){
+				html += 'First name is required. ';
+				check = true;
+			}
+			if($('.register-lastName').val().trim() == ''){
+				html += 'Last name is required. ';
+				check = true;
+			}
+			if($('.register-pass').val().trim() == ''){
+				html += 'Password is required. ';
+				check = true;
+			}
+			if($('.register-repass').val().trim() == ''){
+				html += 'RePassword is required. ';
+				check = true;
+			}
+			if($('.register-pass').val() != $('.register-repass').val()){
+				html += 'RePassword is not match.';
+				check = true;
+			}
+			$('.error-register').html(html);
+			return check;
+		}
+	</script>
+</body>
+</html>

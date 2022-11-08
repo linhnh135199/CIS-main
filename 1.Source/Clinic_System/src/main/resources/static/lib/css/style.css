@@ -1,0 +1,27 @@
+.sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 57px;
+  left: 0;
+  background-color: #343a40;
+  overflow-x: hidden;
+}
+
+body {
+  background:url('/lib/img/kFWSN2.jpg');
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+		@media only screen and (min-width: 1024px) {
+.sticky-sidebar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  bottom: 0;
+}
+}

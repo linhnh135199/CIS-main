@@ -1,0 +1,65 @@
+<div class="modal fade" id="modal-add-edit-medicine" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title title-add-edit-icd"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="id-medicine" class="form-control">
+                <div class="form-group">
+                    <label>Số đăng kí</label>
+                    <input type="text" id="input-so-dang-ky" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Tên thuốc</label>
+                    <input type="text" id="input-ten-thuoc" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Mã hoạt chất</label>
+                    <input type="text" id="input-ma-hoat-chat" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Hoạt chất</label>
+                    <input type="text" id="input-hoat-chat" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Mã đường dùng</label>
+                    <input type="text" id="input-ma-duong-dung" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Đường dùng</label>
+                    <input type="text" id="input-duong-dung" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Hàm lượng</label>
+                    <input type="text" id="input-ham-luong" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Đóng gói</label>
+                    <input type="text" id="imput-dong-goi" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Hãng sản xuất</label>
+                    <input type="text" id="input-hang-sx" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Nước sản xuất</label>
+                    <input type="text" id="input-nuoc-sx" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Giá bán</label>
+                    <input type="text" id="input-price" class="form-control">
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-primary" onclick="addEditMedicineAction()">Lưu</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

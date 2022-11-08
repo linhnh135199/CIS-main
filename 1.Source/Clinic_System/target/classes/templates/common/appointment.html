@@ -1,0 +1,199 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Đặt lịch hẹn</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" th:href="@{/lib/css/all.min.css}">
+    <!-- IonIcons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.css"
+          integrity="sha512-gp+RQIipEa1X7Sq1vYXnuOW96C4704yI1n0YB9T/KqdvqaEgL6nAuTSrKufUX3VBONq/TPuKiXGLVgBKicZ0KA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.css"
+          integrity="sha512-ClXpwbczwauhl7XC16/EFu3grIlYTpqTYOwqwAi7rNSqxmTqCpE8VS3ovG+qi61GoxSLnuomxzFXDNcPV1hvCQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" th:href="@{/lib/css/adminlte.min.css}">
+</head>
+<body style="background-color: #f4f6f9;">
+<div>
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <h1 style="text-align: center;">ĐẶT LỊCH KHÁM</h1>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <section class="content">
+        <div class="row">
+            <div class="col-12 col-sm-2">
+            </div>
+            <div class="col-12 col-sm-3">
+                <div class="form-group">
+                    <label>Số điện thoại <span class="text-danger"> (*)</span></label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                        </div>
+                        <input type="text" id="booking-phone-input" class="form-control"
+                               data-inputmask='"mask": "9999999999"' data-mask>
+                    </div>
+                    <input type="hidden" id="booking-id-input">
+                    <input type="hidden" id="booking-code-patient-input">
+                    <input type="hidden" id="booking-patient-id-input">
+                </div>
+                <div class="form-group">
+                    <label>Họ và tên <span class="text-danger"> (*)</span></label>
+                    <input type="text" class="form-control" id="booking-full-name-input" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label>Ngày sinh <span class="text-danger"> (*)</span></label>
+                    <input type="text" class="form-control" id="booking-birthday-input" data-inputmask-alias="datetime"
+                           data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric">
+                </div>
+                <div class="form-group">
+                    <label>Địa chỉ</label>
+                    <input type="text" class="form-control" id="booking-address-input" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label>Chọn ngày khám <span class="text-danger"> (*)</span></label>
+                    <input type="text" class="form-control" id="booking-date-admission" data-inputmask-alias="datetime"
+                           data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric">
+                </div>
+
+                <div class="form-group">
+                    <label>Chọn giờ khám <span class="text-danger"> (*)</span></label>
+                    <select class="form-control select2" id="booking-hour-admission-input" style="width: 100%;">
+                        <option selected="selected">Sáng</option>
+                        <option>Chiều</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-12 col-sm-2">
+            </div>
+            <div class="col-12 col-sm-3">
+                <div class="form-group" style="display:none">
+                    <label>Mã bệnh nhân</label>
+                    <input type="text" class="form-control" id="booking-patient-code-input" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Giới tính <span class="text-danger"> (*)</span></label>
+                    <select class="form-control select2" id="booking-gender-input" style="width: 100%;">
+                        <option selected="selected">Nam</option>
+                        <option>Nữ</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" id="booking-email-input" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label>Tên người Giám Hộ( nếu có)</label>
+                    <input type="text" class="form-control" id="booking-name-companion-input" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label>Số điện thoại Giám Hộ( nếu có)</label>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                        <input type="text" id="booking-phone-companion-input" class="form-control"
+                               data-inputmask='"mask": "9999999999"' data-mask>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Mối quan hệ với người bệnh( nếu có) </label>
+                    <input type="text" class="form-control" id="booking-companion-relationship-input" placeholder="">
+                </div>
+            </div>
+            <div class="col-12 col-sm-2">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-2">
+            </div>
+            <div class="col-12 col-sm-8">
+                <div class="form-group">
+                    <label>Vấn đề sức khỏe cần khám</label>
+                    <textarea id="booking-description-input" class="form-control" rows="4"></textarea>
+                </div>
+                <div class="form-group booking-room-class" style="display:none">
+                    <label>Chọn phòng</label>
+                    <select class="form-control select2" id="booking-room-input" style="width: 50%;">
+                    </select>
+                </div>
+            </div>
+            <div class="col-12 col-sm-2">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-2">
+            </div>
+            <div class="col-12 col-sm-2">
+                <div class="form-group">
+                    <label>Trạng thái: </label>
+                    <input type="text" class="form-control" id="booking-status-input" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="row button-booking-button-register">
+            <div class="col-12 text-center">
+                <input type="submit" value="Đăng ký" class="btn btn-success button-booking" onclick="bookingAction();">
+            </div>
+        </div>
+        <div class="row button-booking-button" style="display:none">
+            <div class="col-12 col-sm-2">
+            </div>
+            <div class="col-12 col-sm-8">
+                <input type="submit" value="Xác nhận lịch hẹn" class="btn btn-success button-booking button-xac-nhan-lich-hen"
+                       onclick="bookingChangeStatusAction('confirm');">
+                <input type="submit" value="Tiếp nhận" class="btn btn-primary button-booking button-tiep-nhan-lich-hen"
+                       onclick="bookingChangeStatusAction('receive');">
+                <input type="submit" value="Hủy Lịch hẹn" class="btn btn-danger button-booking button-booking-cancel"
+                       onclick="bookingChangeStatusAction('cancel');">
+                <a th:href="@{/doctor/booking-management}" class="btn btn-warning">
+                    <span>Quay lại</span>
+                </a>
+            </div>
+            <div class="col-12 col-sm-2">
+            </div>
+        </div>
+    </section>
+</div>
+
+</body>
+<script src="/lib/js/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/lib/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE -->
+<!--<script src="/lib/select2/js/select2.full.min.js" ></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.full.min.js"
+        integrity="sha512-RtZU3AyMVArmHLiW0suEZ9McadTdegwbgtiQl5Qqo9kunkVg1ofwueXD8/8wv3Af8jkME3DDe3yLfR8HSJfT2g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!--<script src="/lib/js/moment.min.js" ></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!--<script src="/lib/js/jquery.inputmask.min.js" ></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8-beta.15/jquery.inputmask.min.js"
+        integrity="sha512-eum9D1RPicKrvZhf7ou17bWG/No1K7hX/kayp4EjFfuRx5E6jTtHkqUs4HN3whiaNqWx4g3UThNWcFjJqCAsXw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- date-range-picker -->
+<!--<script src="/lib/js/daterangepicker.min.js" ></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.min.js"
+        integrity="sha512-mh+AjlD3nxImTUGisMpHXW03gE6F4WdQyvuFRkjecwuWLwD2yCijw4tKA3NsEFpA1C3neiKhGXPSIGSfCYPMlQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!--<script src="/lib/js/tempusdominus-bootstrap-4.min.js" ></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js"
+        integrity="sha512-k6/Bkb8Fxf/c1Tkyl39yJwcOZ1P4cRrJu77p83zJjN2Z55prbFHxPs9vN7q3l3+tSMGPDdoH51AEU8Vgo1cgAA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/lib/js/adminlte.js"></script>
+<script src="/app/js/common.js"></script>
+<script src="/app/js/appointment.js"></script>
+</html>

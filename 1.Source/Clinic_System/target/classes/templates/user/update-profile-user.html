@@ -1,0 +1,107 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>User</title>
+
+	<!-- Google Font: Source Sans Pro -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+	<!-- Font Awesome Icons -->
+	<link rel="stylesheet" th:href="@{/lib/css/all.min.css}">
+	<!-- IonIcons -->
+	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+	<!-- Theme style -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.css" integrity="sha512-gp+RQIipEa1X7Sq1vYXnuOW96C4704yI1n0YB9T/KqdvqaEgL6nAuTSrKufUX3VBONq/TPuKiXGLVgBKicZ0KA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.css" integrity="sha512-ClXpwbczwauhl7XC16/EFu3grIlYTpqTYOwqwAi7rNSqxmTqCpE8VS3ovG+qi61GoxSLnuomxzFXDNcPV1hvCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" th:href="@{/lib/css/adminlte.min.css}">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/smoothness/jquery-ui.css">
+
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+	<div  th:replace="common/header :: header"/>
+	<!-- Content Wrapper. Contains page content -->
+	<div class="content-wrapper">
+
+		<div class="card card-primary card-outline">
+			<div class="card-body">
+				<div class="modal-body">
+					<input type="hidden" id="id-user" class="form-control">
+					<div class="form-group">
+						<label>Điện thoại<span class="text-danger"> (*)</span></label>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-phone"></i></span>
+							</div>
+							<input type="text" id="phone-user" class="form-control" data-inputmask='"mask": "9999999999"' data-mask>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="pass-user">Mật khẩu<span class="text-danger"> (*)</span></label>
+						<input type="password" id="pass-user" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="repass-user">Nhập lại mật khẩu<span class="text-danger"> (*)</span></label>
+						<input type="password" id="repass-user" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="full-name-user">Họ và tên<span class="text-danger"> (*)</span></label>
+						<input type="text" id="full-name-user" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="sex-user">Giới tính<span class="text-danger"> (*)</span></label>
+						<select id="sex-user" class="form-control custom-select">
+							<option selected="" disabled="">Select one</option>
+							<option>Nam</option>
+							<option>Nữ</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label>Ngày sinh<span class="text-danger"> (*)</span></label>
+						<input type="text" class="form-control" id="birthday-user" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric">
+					</div>
+					<div class="form-group">
+						<label for="email-user">Email address</label>
+						<input type="email" class="form-control" id="email-user" placeholder="Enter email">
+					</div>
+					<div class="form-group">
+						<label for="address-user">Address</label>
+						<input type="text" class="form-control" id="address-user" placeholder="Address">
+					</div>
+				</div>
+				<div class="modal-footer justify-content-between">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+					<button type="button" class="btn btn-primary" onclick="addEditUserAction()">Lưu</button>
+				</div>
+			</div>
+			<!-- /.card -->
+		</div>
+		<!-- /.content -->
+	</div>
+
+	<div  th:replace="common/footer :: footer"/>
+
+</div>
+
+<script src="/lib/js/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+<!-- Bootstrap -->
+<script src="/lib/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE -->
+<!--<script src="/lib/select2/js/select2.full.min.js" ></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.full.min.js" integrity="sha512-RtZU3AyMVArmHLiW0suEZ9McadTdegwbgtiQl5Qqo9kunkVg1ofwueXD8/8wv3Af8jkME3DDe3yLfR8HSJfT2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!--<script src="/lib/js/moment.min.js" ></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!--<script src="/lib/js/jquery.inputmask.min.js" ></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8-beta.15/jquery.inputmask.min.js" integrity="sha512-eum9D1RPicKrvZhf7ou17bWG/No1K7hX/kayp4EjFfuRx5E6jTtHkqUs4HN3whiaNqWx4g3UThNWcFjJqCAsXw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- date-range-picker -->
+<!--<script src="/lib/js/daterangepicker.min.js" ></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.min.js" integrity="sha512-mh+AjlD3nxImTUGisMpHXW03gE6F4WdQyvuFRkjecwuWLwD2yCijw4tKA3NsEFpA1C3neiKhGXPSIGSfCYPMlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!--<script src="/lib/js/tempusdominus-bootstrap-4.min.js" ></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js" integrity="sha512-k6/Bkb8Fxf/c1Tkyl39yJwcOZ1P4cRrJu77p83zJjN2Z55prbFHxPs9vN7q3l3+tSMGPDdoH51AEU8Vgo1cgAA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/lib/js/adminlte.js"></script>
+<script src="/app/js/user-management.js"></script>
+
+</body>
+</html>

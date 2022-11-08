@@ -1,0 +1,203 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Lịch trực</title>
+
+	<!-- Google Font: Source Sans Pro -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+	<!-- Font Awesome Icons -->
+	<link rel="stylesheet" th:href="@{/lib/css/all.min.css}">
+	<!-- IonIcons -->
+	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+	<!-- Theme style -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.css" integrity="sha512-gp+RQIipEa1X7Sq1vYXnuOW96C4704yI1n0YB9T/KqdvqaEgL6nAuTSrKufUX3VBONq/TPuKiXGLVgBKicZ0KA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.css" integrity="sha512-ClXpwbczwauhl7XC16/EFu3grIlYTpqTYOwqwAi7rNSqxmTqCpE8VS3ovG+qi61GoxSLnuomxzFXDNcPV1hvCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" th:href="@{/lib/css/adminlte.min.css}">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/smoothness/jquery-ui.css">
+	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css'>
+	<style>
+        body {
+            background-color: #fff;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        thead{
+            background-color: #6b90da;
+        }
+
+        th,td {
+            padding: 10px;
+        }
+
+        select{
+            width: 180px;
+            max-width: 200px;
+            padding: 5px;
+        }
+
+    </style>
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+	<div  th:replace="common/header :: header"/>
+	<!-- Content Wrapper. Contains page content -->
+	<div class="content-wrapper">
+		<!-- Content Header (Page header) -->
+		<div class="content-header">
+			<div class="container-fluid">
+				<div class="row mb-2">
+					<div class="col-sm-4">
+						<h1 class="m-0">Lịch trực</h1>
+					</div><!-- /.col -->
+					<div class="col-sm-4">
+
+					</div>
+				</div><!-- /.row -->
+			</div><!-- /.container-fluid -->
+		</div>
+		<!-- /.content-header -->
+
+		<!-- Main content -->
+		<div class="content">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<div class="row">
+									<div class="col-md-7">
+
+									</div>
+									<div class="col-md-3">
+									</div>
+									<div class="col-md-2">
+										<div th:switch="${currentUser.getRoleId()}">
+											<!-- role admin -->
+											<div th:case="1">
+												<button type="button" class="btn btn-block bg-gradient-primary btn-sm float-sm-right nut-tao-lich-truc"
+														style="max-width:150px;" onclick="createCalenderDoctor()"
+														data-toggle="modal" data-target="#modal-add-calender-doctor"><span class="bi bi-calendar-plus"></span>
+													Tạo lịch trực
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- /.card-header -->
+							<div class="card-body">
+								<table border="1" style="width:100%">
+									<thead>
+									<tr>
+										<th rowspan="2" style="width:20%">
+											<span class="auto-style1"><strong>Năm</strong></span>
+											<select id="ctl00_mainContent_drpYear">
+												<option value="2019">2019</option>
+												<option value="2020">2020</option>
+												<option value="2021">2021</option>
+												<option selected="selected" value="2022">2022</option>
+												<option value="2023">2023</option>
+											</select>
+											<br />
+											<br />
+											Tuần
+											<select id="ctl00_mainContent_drpSelectWeek">
+
+											</select>
+										</th>
+
+										<div id="ctl00_mainContent_divNameDay">
+											<th align='center'>Thứ 2</th>
+											<th align='center'>Thứ 3</th>
+											<th align='center'>Thứ 4</th>
+											<th align='center'>Thứ 5</th>
+											<th align='center'>Thứ 6</th>
+										</div>
+									</tr>
+									<tr>
+										<div id="ctl00_mainContent_divShowDate">
+											<th align='center' class="data-calender-showDate-1"></th>
+											<th align='center' class="data-calender-showDate-2"></th>
+											<th align='center' class="data-calender-showDate-3"></th>
+											<th align='center' class="data-calender-showDate-4"></th>
+											<th align='center' class="data-calender-showDate-5"></th>
+										</div>
+									</tr>
+									</thead>
+									<tbody>
+									<div id="ctl00_mainContent_divContent">
+										<tr>
+											<td>
+												Sáng 7h30 - 11h
+											</td>
+											<td class="data-calender-morning-1">
+											</td>
+											<td class="data-calender-morning-2">
+											</td>
+											<td class="data-calender-morning-3">
+											</td>
+											<td class="data-calender-morning-4">
+											</td>
+											<td class="data-calender-morning-5">
+											</td>
+
+										</tr>
+										<tr>
+											<td>Chiều 14h - 17h30</td>
+											<td class="data-calender-afternoon-1">
+											</td>
+											<td class="data-calender-afternoon-2">
+											</td>
+											<td class="data-calender-afternoon-3">
+											</td>
+											<td class="data-calender-afternoon-4">
+											</td>
+											<td class="data-calender-afternoon-5">
+											</td>
+										</tr>
+									</div>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- /.col -->
+
+					<!-- /.col -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /.container-fluid -->
+		</div>
+	</div>
+
+	<div  th:replace="common/footer :: footer"/>
+
+</div>
+<div th:replace="app/add-calendar-doctor" />
+
+<script src="/lib/js/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+<!-- Bootstrap -->
+<script src="/lib/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE -->
+<!--<script src="/lib/select2/js/select2.full.min.js" ></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.full.min.js" integrity="sha512-RtZU3AyMVArmHLiW0suEZ9McadTdegwbgtiQl5Qqo9kunkVg1ofwueXD8/8wv3Af8jkME3DDe3yLfR8HSJfT2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!--<script src="/lib/js/moment.min.js" ></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!--<script src="/lib/js/jquery.inputmask.min.js" ></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8-beta.15/jquery.inputmask.min.js" integrity="sha512-eum9D1RPicKrvZhf7ou17bWG/No1K7hX/kayp4EjFfuRx5E6jTtHkqUs4HN3whiaNqWx4g3UThNWcFjJqCAsXw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- date-range-picker -->
+<!--<script src="/lib/js/daterangepicker.min.js" ></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.min.js" integrity="sha512-mh+AjlD3nxImTUGisMpHXW03gE6F4WdQyvuFRkjecwuWLwD2yCijw4tKA3NsEFpA1C3neiKhGXPSIGSfCYPMlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!--<script src="/lib/js/tempusdominus-bootstrap-4.min.js" ></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js" integrity="sha512-k6/Bkb8Fxf/c1Tkyl39yJwcOZ1P4cRrJu77p83zJjN2Z55prbFHxPs9vN7q3l3+tSMGPDdoH51AEU8Vgo1cgAA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/lib/js/adminlte.js"></script>
+<script src="/app/js/calendar-doctor-management.js"></script>
+</body>
+</html>

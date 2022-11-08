@@ -1,0 +1,44 @@
+<div class="modal fade" id="modal-add-calender-doctor" style="display: none;" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title title-add-edit-user">Add Calender</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label>Chọn ngày khám <span class="text-danger"> (*)</span></label>
+					<input type="text" class="form-control" id="booking-date-admission-add" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric">
+				</div>
+
+				<div class="form-group">
+					<label>Chọn giờ khám <span class="text-danger"> (*)</span></label>
+					<select class="form-control select2" id="booking-hour-admission-add" style="width: 100%;">
+						<option value="morning" selected="selected">Sáng</option>
+						<option value="afternoon">Chiều</option>
+					</select>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group booking-room-class">
+						<label>Chọn bác sỹ</label>
+						<select class="form-control select2" id="search-name-doctor">
+						</select>
+					</div>
+				</div>
+				<div class="form-group booking-room-class">
+					<label>Chọn phòng</label>
+					<select class="form-control select2" id="booking-room-input">
+					</select>
+				</div>
+			</div>
+			<div class="modal-footer justify-content-between">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+				<button type="button" class="btn btn-primary" onclick="addCalenderDoctorAction()">Lưu</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

@@ -1,0 +1,98 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="cam-ket">
+    </br>
+
+    <button type="submit" class="btn btn-danger action-in-y-lenh" onclick="printCamKet();">In</button>
+
+    <div class="container" id="view-print-cam-ket">
+        <div class="text-center">
+            <div>
+                <strong>
+                    CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+                </strong>
+            </div>
+            <div>
+                <strong>
+                    Độc lập - Tự do - Hạnh Phúc
+                </strong>
+            </div>
+            <div>
+                <strong>
+                    ------------------
+                </strong>
+            </div>
+            <div>
+                <strong>
+                    GIẤY CAM ĐOAN CHẤP NHẬN
+                </strong>
+            </div>
+            <div>
+                <strong>
+                    PHẨU THUẬT, THỦ THUẬT VÀ GÂY MÊ HỒI SỨC
+                </strong>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <div>
+                    <label class="col-form-label">Họ tên: </label>
+                    <span class="col-form-label name-patient"></span>
+                </div>
+                <div>
+                    <label class="col-form-label">Số điện thoại: </label>
+                    <span class=" col-form-label phone-patient"></span>
+                </div>
+                <div>
+                    <label class="col-form-label">Giới tính: </label>
+                    <span class="col-form-label gender-patient"></span>
+                </div>
+                <div>
+                    <label class="col-form-label">Ngày sinh:</label>
+                    <span class="col-form-label birthday-patient"></span>
+                </div>
+                <div>
+                    <label class="col-form-label">Địa chỉ:</label>
+                    <span class="col-form-label address-patient"></span>
+                </div>
+                <div>
+                    Là người bệnh/đại diện gia đình người bệnh/họ tên là:
+                    ........................................................................................ hiện đang
+                    được điều trị tại Phòng khám
+                </div>
+                <div>
+                    Sau khi nghe bác sĩ cho biết tình trạng bệnh của tôi của người gia đình tôi những nguy hiểm của bệnh
+                    nếu không thực hiện phẫu thuật, thủ thuật, gây mê hồi sức và những rủi ro có thể xảy ra do bệnh tật,
+                    do khi tiến hành phẫu thuật, thủ thuật, cây mẽ hỏi sức, tối tự nguyện viết giấy cam đoan này:
+                </div>
+                <div class="mt-2">
+                    <input type="checkbox">
+                    <label class="ml-3">Đồng ý xin phẫu thuật, thủ thuật, gây mê hồi sức và để giấy này làm bằng</label>
+                </div>
+                <div>
+                    <input type="checkbox">
+                    <label class="ml-3">Không đồng ý phẫu thuật, thủ thuật, gây mê hồi sức và để giấy này làm bằng</label>
+                </div>
+                <div class="row">
+                    <div class="col-7">
+                        </div>
+                    <div class="col-5 text-center">
+                        Ngày ... tháng ... năm 20...
+
+                        <div>
+                            <strong>
+                                NGƯỜI BỆNH/ĐẠI DIỆN GIA ĐÌNH
+                            </strong>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+
+</div>
